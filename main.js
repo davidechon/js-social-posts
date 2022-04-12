@@ -141,13 +141,33 @@ posts.forEach((element)=>{
 // } 
 // onLiked()
 let prendiA = document.getElementsByClassName('like-button');
-prendiA.addEventListener("click", coloraLike);
+console.log(prendiA)
 
-function coloraLike(){
-//cicla l'evento ad ogni elemento
-prendiA.className += " like-button--liked ";
-}
-coloraLike();
+const collectionA = prendiA.map((element) => {
+    return element.className += " like-button--liked ";
+});
+console.log(collectionA);
+
+// prendiA.addEventListener("click", myFunction);
+// function myFunction(){
+//     prendiA.forEach((element) => {
+//         console.log(`
+//         <a class="like-button like-button--liked js-like-button" href="#" data-postid="${element.id}">
+//         `)
+//     });
+// }
+
+
+
+
+// prendiA.addEventListener("click", coloraLike);
+// console.log(collectionA)
+
+// function coloraLike(){
+// //cicla l'evento ad ogni elemento
+// prendiA.className += " like-button--liked ";
+// }
+// coloraLike();
 
 // const prendiMiPiace = getElementByClass('likes__cta').addEventListener('click', myFunction);
 

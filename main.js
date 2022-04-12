@@ -23,7 +23,7 @@
 // > 3. Al click su un pulsante "Mi Piace" di un post, se abbiamo già cliccato dobbiamo decrementare il contatore e cambiare il colore del bottone.
 
 ////////////////////////////////////////////////////////
-
+// Milestone 1
 const posts = [
     {
         "id": 1,
@@ -84,18 +84,7 @@ const posts = [
 
 // console.log(posts);
 
-// let litTemplate = "";
-// data.forEach((element) =>{
-//   litTemplate =`
-//         <div class="icons">
-//           <span><i class="${element.family} ${element.prefix + element.name} ${element.color}"></i></span>
-//           <p class="etichetta">${element.name.toUpperCase()}</p>
-//         </div>
-//       `;
-//       app.innerHTML += litTemplate;
-//       console.log(litTemplate);
-// });
-
+// Milestone 2
 let litTemplate = "";
 posts.forEach((element)=>{
   litTemplate =`
@@ -134,3 +123,36 @@ posts.forEach((element)=>{
       container.innerHTML += litTemplate;
       console.log(litTemplate);
 });
+
+// Milestone 3 Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
+
+// // like-button--liked
+// document.addEventListener("click", liked);
+
+// let btnLiked = document.getElementsByClassName('like-button');
+
+// console.log(btnLiked);
+// let onLike = document.addEventListener("click", onLiked)
+
+// function onLiked() {
+//     this.getElementsByClassName("like-button").classList.add("like-button--liked");
+//     // onLike = document.getElementById('data-postid').style.color = "like-button--liked"
+   
+// } 
+// onLiked()
+let prendiA = document.getElementsByClassName('like-button');
+prendiA.addEventListener("click", coloraLike);
+
+function coloraLike(){
+//cicla l'evento ad ogni elemento
+prendiA.className += " like-button--liked ";
+}
+coloraLike();
+
+// const prendiMiPiace = getElementByClass('likes__cta').addEventListener('click', myFunction);
+
+// function myFunction(){
+//     prendiMiPiace.classList.add('like-button--liked')
+// }
+
+// console.log(prendiMiPiace)

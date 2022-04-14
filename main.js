@@ -107,7 +107,7 @@ posts.forEach((element)=>{
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="${element.id}">
+                        <a class="like-button js-like-button" href="#" data-postid="${element.id}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
@@ -140,39 +140,36 @@ posts.forEach((element)=>{
    
 // } 
 // onLiked()
+// const prendiA = document.getElementsByClassName('like-button');
+// console.log("prendiA questo prende la classe like-button ", prendiA)
+// console.log(prendiA[0]);
+
+// const mioBottone = document.getElementById("mio-bottone");
+// mioBottone.addEventListener("click", function() {
+//      alert('hai cliccato sul bottone');
+// });
+
+
+
+// const prendiA = document.getElementsByClassName('like-button');
+// prendiA.addEventListener("click", coloraLike(){
+//     alert('hai cliccato sul bottone');
+// });
+//     console.log(prendiA);  
+
 let prendiA = document.getElementsByClassName('like-button');
-console.log(prendiA)
+// console.log("questo01 ", prendiA);  
 
-const collectionA = prendiA.map((element) => {
-    return element.className += " like-button--liked ";
-});
-console.log(collectionA);
+prendiA[0].addEventListener("click", coloraLike);
+// console.log("questo02 ", prendiA);  
 
-// prendiA.addEventListener("click", myFunction);
-// function myFunction(){
-//     prendiA.forEach((element) => {
-//         console.log(`
-//         <a class="like-button like-button--liked js-like-button" href="#" data-postid="${element.id}">
-//         `)
-//     });
-// }
+function coloraLike(){
+    let prendiA = document.getElementsByClassName('like-button');
+    for (let i = 0; i < prendiA.length; i++) {
+    prendiA[i].className += " like-button--liked";
+    // console.log("prendiA + classe like-button--liked ", prendiA);
+    }
+    console.log("questo03 ", prendiA);  
 
-
-
-
-// prendiA.addEventListener("click", coloraLike);
-// console.log(collectionA)
-
-// function coloraLike(){
-// //cicla l'evento ad ogni elemento
-// prendiA.className += " like-button--liked ";
-// }
-// coloraLike();
-
-// const prendiMiPiace = getElementByClass('likes__cta').addEventListener('click', myFunction);
-
-// function myFunction(){
-//     prendiMiPiace.classList.add('like-button--liked')
-// }
-
-// console.log(prendiMiPiace)
+};
+coloraLike(); 

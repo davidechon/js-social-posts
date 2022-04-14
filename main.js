@@ -126,12 +126,23 @@ posts.forEach((element)=>{
 
 // Milestone 3 Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
 
-// // like-button--liked
-// document.addEventListener("click", liked);
 
 // let btnLiked = document.getElementsByClassName('like-button');
-
 // console.log(btnLiked);
+
+const listaElementi = document.getElementsByClassName('like-button');
+console.log(listaElementi);
+console.log(listaElementi[0]);
+
+this.classList.add(" like-button--liked");
+
+// for (let i = 0; i < listaElementi.length; i++) {
+//      let elemento = listaElementi[i];
+//      elemento.className = ‘like-button-liked’;
+     
+// }
+
+
 // let onLike = document.addEventListener("click", onLiked)
 
 // function onLiked() {
@@ -157,19 +168,34 @@ posts.forEach((element)=>{
 // });
 //     console.log(prendiA);  
 
-let prendiA = document.getElementsByClassName('like-button');
+// const prendiA = document.getElementsByClassName('like-button');
 // console.log("questo01 ", prendiA);  
 
-prendiA[0].addEventListener("click", coloraLike);
-// console.log("questo02 ", prendiA);  
+// const addLike = document.querySelectorAll('.like-button');
 
-function coloraLike(){
-    let prendiA = document.getElementsByClassName('like-button');
-    for (let i = 0; i < prendiA.length; i++) {
-    prendiA[i].className += " like-button--liked";
-    // console.log("prendiA + classe like-button--liked ", prendiA);
-    }
-    console.log("questo03 ", prendiA);  
+// function addLikeOn(){
+//     addLike.forEach((aggiungi)=> {
+//         addLike.addEventListener("click", function(){
+//             addLike.classList.add("like-button--liked");
+//         })
+//     })
+// };
 
-};
-coloraLike(); 
+// addLikeOn()
+
+// let likeUp = document.getElementsByClassName('like-button');
+// const clickUp = Array.from(likeUp).forEach((a)=> a.addEventListener('click', onClick));
+// function onClick(clickUp){
+
+//     this.style.color = 'purple';
+//     console.log(this)
+
+//     let postId = this.querySelector('a[href]');
+    
+//     console.log(postId);
+//     let likeCounterId = document.getElementById(`like-counter-${posts[0].id}`);
+//     console.log(likeCounterId)
+
+//     console.log(clickUp);
+// };
+

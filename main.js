@@ -136,16 +136,31 @@ posts.forEach((element)=>{
 const itemsCollection = document.querySelectorAll("a.like-button.js-like-button");
 console.log("querySelectorAll itemsCollection 00-A",itemsCollection)
 console.log("querySelectorAll itemsCollection 01-A",itemsCollection[0])
+console.log("querySelectorAll itemsCollection 01-A",itemsCollection[1])
+console.log("querySelectorAll itemsCollection 01-A",itemsCollection[2])
+console.log("querySelectorAll itemsCollection 01-A",itemsCollection[3])
+console.log("querySelectorAll itemsCollection 01-A",itemsCollection[4])
 
 
-itemsCollection.addEventListener('click', myFunction());
+// questo aggiunge la classe al like index 0
+itemsCollection[0].addEventListener("click", function(){
+    itemsCollection[0].classList.add("like-button--liked")
+});
 
-function myFunction() {
-    for( let i = 0; i < itemsCollection.length; i++ ){
-        itemsCollection[i].classList.add("like-button--liked");
-        console.log("stampa 05-A", itemsCollection[i] );
-    }
-}
+       
+    
+
+// questo aggiunge la classe a tutti i like
+// function addLike() {
+//     for( let i = 0; i < itemsCollection.length; i++ ){
+//         itemsCollection[i].classList.add("like-button--liked");
+//         console.log("stampa 05-A", itemsCollection[i]);
+//     }
+// }
+
+// addLike()
+// console.log(itemsCollection)
+
 
 // for( let i = 0; i < itemsCollection.length; i++ ){
 //     itemsCollection[i].classList.add("like-button--liked");

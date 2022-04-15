@@ -126,76 +126,25 @@ posts.forEach((element)=>{
 
 // Milestone 3 Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
 
+// Qui evidenzio la collection
+let btnLiked = document.getElementsByClassName('like-button');
+console.log(btnLiked);
 
-// let btnLiked = document.getElementsByClassName('like-button');
-// console.log(btnLiked);
+// Converto la collection in un array
+// const arrayLike = btnLiked;
+// // Arrow function
+// Array.from(arrayLike, (element) => { /* ... */ } )
+// Array.from(arrayLike, (element, index) => { /* ... */ } )
 
-const listaElementi = document.getElementsByClassName('like-button');
-console.log(listaElementi);
-console.log(listaElementi[0]);
+// // Mapping function
+// Array.from(arrayLike, mapFn)
+// Array.from(arrayLike, mapFn, thisArg)
 
-this.classList.add(" like-button--liked");
-
-// for (let i = 0; i < listaElementi.length; i++) {
-//      let elemento = listaElementi[i];
-//      elemento.className = ‘like-button-liked’;
-     
-// }
-
-
-// let onLike = document.addEventListener("click", onLiked)
-
-// function onLiked() {
-//     this.getElementsByClassName("like-button").classList.add("like-button--liked");
-//     // onLike = document.getElementById('data-postid').style.color = "like-button--liked"
-   
-// } 
-// onLiked()
-// const prendiA = document.getElementsByClassName('like-button');
-// console.log("prendiA questo prende la classe like-button ", prendiA)
-// console.log(prendiA[0]);
-
-// const mioBottone = document.getElementById("mio-bottone");
-// mioBottone.addEventListener("click", function() {
-//      alert('hai cliccato sul bottone');
-// });
+// // Inline mapping function
+// Array.from(arrayLike, function mapFn(element) { /* ... */ })
+// Array.from(arrayLike, function mapFn(element, index) { /* ... */ })
+// Array.from(arrayLike, function mapFn(element) { /* ... */ }, thisArg)
+// Array.from(arrayLike, function mapFn(element, index) { /* ... */ }, thisArg)
 
 
-
-// const prendiA = document.getElementsByClassName('like-button');
-// prendiA.addEventListener("click", coloraLike(){
-//     alert('hai cliccato sul bottone');
-// });
-//     console.log(prendiA);  
-
-// const prendiA = document.getElementsByClassName('like-button');
-// console.log("questo01 ", prendiA);  
-
-// const addLike = document.querySelectorAll('.like-button');
-
-// function addLikeOn(){
-//     addLike.forEach((aggiungi)=> {
-//         addLike.addEventListener("click", function(){
-//             addLike.classList.add("like-button--liked");
-//         })
-//     })
-// };
-
-// addLikeOn()
-
-// let likeUp = document.getElementsByClassName('like-button');
-// const clickUp = Array.from(likeUp).forEach((a)=> a.addEventListener('click', onClick));
-// function onClick(clickUp){
-
-//     this.style.color = 'purple';
-//     console.log(this)
-
-//     let postId = this.querySelector('a[href]');
-    
-//     console.log(postId);
-//     let likeCounterId = document.getElementById(`like-counter-${posts[0].id}`);
-//     console.log(likeCounterId)
-
-//     console.log(clickUp);
-// };
-
+  

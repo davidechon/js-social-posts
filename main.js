@@ -127,8 +127,8 @@ posts.forEach((element)=>{
 // Milestone 3 Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
 
 // Qui evidenzio la collection
-let btnLiked = document.getElementsByClassName('like-button');
-console.log(btnLiked);
+// let btnLiked = document.getElementsByClassName('like-button');
+// console.log(btnLiked);
 
 // Converto la collection in un array
 // const arrayLike = btnLiked;
@@ -146,5 +146,45 @@ console.log(btnLiked);
 // Array.from(arrayLike, function mapFn(element) { /* ... */ }, thisArg)
 // Array.from(arrayLike, function mapFn(element, index) { /* ... */ }, thisArg)
 
+// Converto la collection in un array
+// e la ciclo al click per aggiungere la classe al bottone miPiace
+const myCollection = document.getElementsByTagName("a");
+console.log("questa è la mia collection 00",myCollection)
+console.log("questa è item di collection 01",myCollection[0])
+
+// forse ci siamo:
+// prendi myCollection.length, lo cicli e salvi il risultato del contatore
+// in una variabile elementi
+// poi cicli elementi per aggiungere la classe al click
+
+//
+// PROVARE
+//
+
+
+// myCollection[0].classList.add("like-button--liked");
+// console.log("questa è item di collection 02",myCollection[0])
+
+// const myCollection = document.getElementsByClassName("like-button");
+// let elementCollection = "";
+// for(let i = 0; i < myCollection.length; i++){
+//     // elementCollection += myCollection[i].style.color = " like-button--liked";
+//     console.log("questi sono item di collection 05",myCollection)
+// }
+
+
+
+// for(let key in posts){
+//     console.log(posts[key])
+// }
+// document.getElementsByClassName("a").innerHTML += elementCollection;
+// console.log("questi sono item di collection 04",myCollection)
+
+// myCollection[index].addEventListener("click", function(){ 
+//     myCollection[0].classList.add("like-button--liked");
+//     console.log("questa è item di collection 03",myCollection[0]) 
+// });
+
+// array.forEach(function(currentValue, index, arr), thisValue)
 
   

@@ -126,65 +126,36 @@ posts.forEach((element)=>{
 
 // Milestone 3 Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
 
-// Qui evidenzio la collection
-// let btnLiked = document.getElementsByClassName('like-button');
-// console.log(btnLiked);
 
-// Converto la collection in un array
-// const arrayLike = btnLiked;
-// // Arrow function
-// Array.from(arrayLike, (element) => { /* ... */ } )
-// Array.from(arrayLike, (element, index) => { /* ... */ } )
+// Prendo l'elemento a
+// const myCollection = document.getElementsByTagName("a");
+// console.log("questa è la mia collection 00",myCollection)
+// console.log("questa è item di collection 01",myCollection[0])
 
-// // Mapping function
-// Array.from(arrayLike, mapFn)
-// Array.from(arrayLike, mapFn, thisArg)
-
-// // Inline mapping function
-// Array.from(arrayLike, function mapFn(element) { /* ... */ })
-// Array.from(arrayLike, function mapFn(element, index) { /* ... */ })
-// Array.from(arrayLike, function mapFn(element) { /* ... */ }, thisArg)
-// Array.from(arrayLike, function mapFn(element, index) { /* ... */ }, thisArg)
-
-// Converto la collection in un array
-// e la ciclo al click per aggiungere la classe al bottone miPiace
-const myCollection = document.getElementsByTagName("a");
-console.log("questa è la mia collection 00",myCollection)
-console.log("questa è item di collection 01",myCollection[0])
-
-// forse ci siamo:
-// prendi myCollection.length, lo cicli e salvi il risultato del contatore
-// in una variabile elementi
-// poi cicli elementi per aggiungere la classe al click
-
-//
-// PROVARE
-//
+// Prendo l'elemento a
+const itemsCollection = document.querySelectorAll("a.like-button.js-like-button");
+console.log("querySelectorAll itemsCollection 00-A",itemsCollection)
+console.log("querySelectorAll itemsCollection 01-A",itemsCollection[0])
 
 
-// myCollection[0].classList.add("like-button--liked");
-// console.log("questa è item di collection 02",myCollection[0])
+itemsCollection.addEventListener('click', myFunction());
 
-// const myCollection = document.getElementsByClassName("like-button");
-// let elementCollection = "";
-// for(let i = 0; i < myCollection.length; i++){
-//     // elementCollection += myCollection[i].style.color = " like-button--liked";
-//     console.log("questi sono item di collection 05",myCollection)
+function myFunction() {
+    for( let i = 0; i < itemsCollection.length; i++ ){
+        itemsCollection[i].classList.add("like-button--liked");
+        console.log("stampa 05-A", itemsCollection[i] );
+    }
+}
+
+// for( let i = 0; i < itemsCollection.length; i++ ){
+//     itemsCollection[i].classList.add("like-button--liked");
+//     console.log("stampa 04", itemsCollection[i] );
 // }
 
 
 
-// for(let key in posts){
-//     console.log(posts[key])
+// element.addEventListener("click", myFunction);
+
+// function myFunction() {
+//   alert ("Hello World!");
 // }
-// document.getElementsByClassName("a").innerHTML += elementCollection;
-// console.log("questi sono item di collection 04",myCollection)
-
-// myCollection[index].addEventListener("click", function(){ 
-//     myCollection[0].classList.add("like-button--liked");
-//     console.log("questa è item di collection 03",myCollection[0]) 
-// });
-
-// array.forEach(function(currentValue, index, arr), thisValue)
-
-  

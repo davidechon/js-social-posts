@@ -126,51 +126,24 @@ posts.forEach((element)=>{
 
 // Milestone 3 Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
 
+// AddLike
+const itemsCollection = document.querySelectorAll('a.like-button.js-like-button');
+// console.log("querySelectorAll itemsCollection 00-A",itemsCollection)
+// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[0])
+// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[1])
+// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[2])
+// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[3])
+// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[4])
 
-// Prendo l'elemento a
-// const myCollection = document.getElementsByTagName("a");
-// console.log("questa è la mia collection 00",myCollection)
-// console.log("questa è item di collection 01",myCollection[0])
-
-// Prendo l'elemento a
-const itemsCollection = document.querySelectorAll("a.like-button.js-like-button");
-console.log("querySelectorAll itemsCollection 00-A",itemsCollection)
-console.log("querySelectorAll itemsCollection 01-A",itemsCollection[0])
-console.log("querySelectorAll itemsCollection 01-A",itemsCollection[1])
-console.log("querySelectorAll itemsCollection 01-A",itemsCollection[2])
-console.log("querySelectorAll itemsCollection 01-A",itemsCollection[3])
-console.log("querySelectorAll itemsCollection 01-A",itemsCollection[4])
-
-
-// questo aggiunge la classe al like index 0
-itemsCollection[0].addEventListener("click", function(){
-    itemsCollection[0].classList.add("like-button--liked")
-});
-
-       
-    
-
-// questo aggiunge la classe a tutti i like
-// function addLike() {
-//     for( let i = 0; i < itemsCollection.length; i++ ){
-//         itemsCollection[i].classList.add("like-button--liked");
-//         console.log("stampa 05-A", itemsCollection[i]);
-//     }
-// }
-
-// addLike()
-// console.log(itemsCollection)
+function addLike(){
+    itemsCollection.forEach((item)=>{
+        item.addEventListener('click', function(){
+            item.classList.add("like-button--liked");
+        })
+    })
+};
+addLike();
 
 
-// for( let i = 0; i < itemsCollection.length; i++ ){
-//     itemsCollection[i].classList.add("like-button--liked");
-//     console.log("stampa 04", itemsCollection[i] );
-// }
-
-
-
-// element.addEventListener("click", myFunction);
-
-// function myFunction() {
-//   alert ("Hello World!");
-// }
+// Counter ++
+// document.addEventListener('click');

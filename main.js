@@ -145,22 +145,62 @@ posts.forEach((element)=>{
 const itemsCollection = document.querySelectorAll('a.like-button.js-like-button');
 console.log("stampa collection",itemsCollection)
 
-let arguments = [...itemsCollection]
+const arguments = [...itemsCollection]
 function collectionToArray() {
     arguments = [].slice.call(itemsCollection);
     console.log("stampa il nuovo  array ",arguments);
     console.log("stampa elemento 0 dell'array per controllo ",arguments[0]);
 }   
 collectionToArray(itemsCollection);
-
 console.log("stampa contenuto di arguments ", arguments.length)
 console.log("stampa contenuto di arguments ", arguments)
 
+// let index = [];
+// for(let i = 0; i < arguments.length; i++){
+//     // console.log(i.length)
+//     console.log("i = ",i)
+//     index = [...arguments]
+//     console.log("index == ",index.length)
+// }
+// console.log("index = ",index)
+
 // Genero l'evento al click
-arguments.addEventListener('click', addLike());
-function addLike(){
-    const aggiungiA = document.getElementsByClassName("a").classList.add('.like-button--liked')
-}
+// let postContLike = [];
+
+// const bottoni = document.querySelectorAll('[data-postId');
+
+// bottoni.forEach((button) => {
+//     button.addEventListener('click', function() {
+//         button.classList.add('like-button--liked');
+//         let post = button.getAttribute('data-postId');
+//         const contatore = document.getElementById(`like-counter-${post}`);
+//         postContLike.push(post);
+//         contatore.innerHTML = `${posts[element - 1].likes + 1}`
+//     })
+// })
+
+// .addEventListener('click', addLike);
+
+// function addLike(){
+//     let counter = document.getElementsById("like-counter-1");
+//     iLike.setAttribute('class', "like-button js-like-button like-button--liked");
+//     counter.innerHTML++
+//     console.log(ilike)
+//     console.log(counter)
+// }
+// mioBottone.addEventListener("click", addLike()) ;
+
+// function addLike(){
+//     mioBottone.style(".like-button--liked")
+// }
+
+// arguments.addEventListener('click', addLike(){
+//     document.getElementsByClassName("a").classList.add('.like-button--liked')
+// document.getElementById("mio-elemento").classList.add(‘classe-da-aggiungere’);
+// });
+// function addLike(){
+    
+// }
 
 
 
@@ -198,9 +238,9 @@ function addLike(){
 
 // collectionToArray.addEventListener('click', addLike());
 
-const addId = [];
+// const addId = [];
 
-function addLike(){
+// function addLike(){
     // alert('questo funziona')
     // collectionToArray.classList.add("like-button--liked");
     // collectionToArray.setAttribute('class', 'like-button--liked');
@@ -212,7 +252,7 @@ function addLike(){
     // `
     // console.log("stampa addLike 04", collectionToArray)
     // addId = posts.likes++;
-}
+// }
 
 
 

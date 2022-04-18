@@ -141,16 +141,52 @@ posts.forEach((element)=>{
 // [_] 9. Bonus 3 - Creare un evento contrario al "Mi Piace", togliendo il colore e togliendo 1 unità
 ////////////////////////////////////////////////////////
 
-
-
-// Richiamo gli elementi della Collection
+// Converto la collection in un array
 const itemsCollection = document.querySelectorAll('a.like-button.js-like-button');
-console.log("stampa collection 00",itemsCollection)
-console.log("querySelectorAll itemsCollection 01-A",itemsCollection[0])
-console.log("querySelectorAll itemsCollection 01-A",itemsCollection[1])
-console.log("querySelectorAll itemsCollection 01-A",itemsCollection[2])
-console.log("querySelectorAll itemsCollection 01-A",itemsCollection[3])
-console.log("querySelectorAll itemsCollection 01-A",itemsCollection[4])
+console.log("stampa collection",itemsCollection)
+
+let arguments = [...itemsCollection]
+function collectionToArray() {
+    arguments = [].slice.call(itemsCollection);
+    console.log("stampa il nuovo  array ",arguments);
+    console.log("stampa elemento 0 dell'array per controllo ",arguments[0]);
+}   
+collectionToArray(itemsCollection);
+
+console.log("stampa contenuto di arguments ", arguments.length)
+console.log("stampa contenuto di arguments ", arguments)
+
+// Genero l'evento al click
+arguments.addEventListener('click', addLike());
+function addLike(){
+    const aggiungiA = document.getElementsByClassName("a").classList.add('.like-button--liked')
+}
+
+
+
+
+// let isLike = 
+// isLike.push("like-button--liked")
+// collectionToArray.className("like-button").addEventListener('click', addLike());
+
+// let  checkItems = []
+// console.log("controllo che sia un array 01 ",checkItems)
+
+// checkItems = document.querySelectorAll('a.like-button.js-like-button')
+// console.log("controllo la lunghezza dell'array 02 ",checkItems)
+// console.log("controllo la lunghezza dell'array 03 ",checkItems.length)
+
+// let cerca = checkItems.includes('a.like-button.js-like-button')
+// console.log("controllo che l'array contenga la classe 04 ",cerca)
+// console.log("controllo che l'array contenga la classe 05 ",cerca.length)
+// Richiamo gli elementi della Collection
+// const itemsCollection = document.querySelectorAll('a.like-button.js-like-button');
+// console.log("stampa collection 00",itemsCollection)
+// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[0])
+// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[1])
+// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[2])
+// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[3])
+// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[4])
 
 
 // const collectionToArray = Array.prototype.slice.call( itemsCollection );

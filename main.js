@@ -86,7 +86,7 @@ const posts = [
 // console.log(posts);
 
 // Milestone 2
-// disegno gli items
+// Creo il template 
 function gridItem(post){
     const template = `
         <div class="post">
@@ -96,32 +96,45 @@ function gridItem(post){
                         <img class="profile-pic" src="${post.author.image}" alt="${post.author.name}">                    
                     </div>
                     <div class="post-meta__data">
-                        <div class="post-meta__author">Phil Mangione</div>
-                        <div class="post-meta__time">4 mesi fa</div>
+                        <div class="post-meta__author">${post.author.name}</div>
+                        <div class="post-meta__time">${post.created}</div>
                     </div>                    
                 </div>
             </div>
-            <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.</div>
+            <div class="post__text">${post.content}</div>
             <div class="post__image">
-                <img src="https://unsplash.it/600/300?image=171" alt="">
+                <img src="${post.media}" alt="Immagine Post">
             </div>
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button  js-like-button" href="#" data-postid="${post.id}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+                        Piace a <b id="like-counter-1" class="js-likes-counter">${post.likes}</b> persone
                     </div>
                 </div> 
             </div>             
         </div>
     `
+    return template;
 }
 
+// Creo la griglia
+function drawGrid(){
+    const container = document.getElementById('container');
+    let htmlGenerato = '';
+    posts.forEach((post)=>{
+        const card = gridItem(post);
+        htmlGenerato += card;
+
+    })
+    container.innerHTML = htmlGenerato;
+}
+drawGrid()
 
 
 
@@ -180,7 +193,7 @@ posts.forEach((element)=>{
 // [_] 8. Bonus 2 - Gestire l'immagine profilo mancante con le iniziali dell'utente
 // [_] 9. Bonus 3 - Creare un evento contrario al "Mi Piace", togliendo il colore e togliendo 1 unità
 ////////////////////////////////////////////////////////
-
+/*
 // Converto la collection in un array
 const itemsCollection = document.querySelectorAll('a.like-button.js-like-button');
 console.log("stampa collection",itemsCollection)

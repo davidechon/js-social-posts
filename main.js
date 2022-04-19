@@ -86,7 +86,47 @@ const posts = [
 // console.log(posts);
 
 // Milestone 2
-let litTemplate = "";
+// disegno gli items
+function gridItem(post){
+    const template = `
+        <div class="post">
+             <div class="post__header">
+                <div class="post-meta">                    
+                    <div class="post-meta__icon">
+                        <img class="profile-pic" src="${post.author.image}" alt="${post.author.name}">                    
+                    </div>
+                    <div class="post-meta__data">
+                        <div class="post-meta__author">Phil Mangione</div>
+                        <div class="post-meta__time">4 mesi fa</div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.</div>
+            <div class="post__image">
+                <img src="https://unsplash.it/600/300?image=171" alt="">
+            </div>
+            <div class="post__footer">
+                <div class="likes js-likes">
+                    <div class="likes__cta">
+                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                            <span class="like-button__label">Mi Piace</span>
+                        </a>
+                    </div>
+                    <div class="likes__counter">
+                        Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+                    </div>
+                </div> 
+            </div>             
+        </div>
+    `
+}
+
+
+
+
+////////////////////////////////////////////////////////
+/*let litTemplate = "";
 posts.forEach((element)=>{
   litTemplate =`
         <div class="post">
@@ -123,15 +163,15 @@ posts.forEach((element)=>{
         `;
       container.innerHTML += litTemplate;
       console.log(litTemplate);
-});
+}); */
 
 // > 3. Al click su un pulsante "Mi Piace" di un post, se abbiamo già cliccato dobbiamo decrementare il contatore e cambiare il colore del bottone.
 // Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like
 
 ////////////////////////////////////////////////////////
 // Cosa devo fare:
-// [_] 1. Richiamare gli elementi della collection
-// [_] 2. Convertire la collection in un array
+// [x] 1. Richiamare gli elementi della collection
+// [x] 2. Convertire la collection in un array
 // [_] 3. Richiamare gli elementi interessati al "Mi Piace"
 // [_] 4. Creare evento al click
 // [_] 5. Aggiungere 1 unità al contatore
@@ -149,7 +189,7 @@ const arguments = [...itemsCollection]
 function collectionToArray() {
     arguments = [].slice.call(itemsCollection);
     console.log("stampa il nuovo  array ",arguments);
-    console.log("stampa elemento 0 dell'array per controllo ",arguments[0]);
+    console.log("stampa elemento 0 dell'array per controllo ", arguments[0]);
 }   
 collectionToArray(itemsCollection);
 console.log("stampa contenuto di arguments ", arguments.length)

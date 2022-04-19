@@ -85,44 +85,7 @@ const posts = [
 
 // console.log(posts);
 
-// Milestone 2
-// Creo il template 
-function gridItem(post){
-    const template = `
-        <div class="post">
-             <div class="post__header">
-                <div class="post-meta">                    
-                    <div class="post-meta__icon">
-                        <img class="profile-pic" src="${post.author.image}" alt="${post.author.name}">                    
-                    </div>
-                    <div class="post-meta__data">
-                        <div class="post-meta__author">${post.author.name}</div>
-                        <div class="post-meta__time">${post.created}</div>
-                    </div>                    
-                </div>
-            </div>
-            <div class="post__text">${post.content}</div>
-            <div class="post__image">
-                <img src="${post.media}" alt="Immagine Post">
-            </div>
-            <div class="post__footer">
-                <div class="likes js-likes">
-                    <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="${post.id}">
-                            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-                            <span class="like-button__label">Mi Piace</span>
-                        </a>
-                    </div>
-                    <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${post.likes}</b> persone
-                    </div>
-                </div> 
-            </div>             
-        </div>
-    `
-    return template;
-}
-
+// Milestone 2 + Bonus 1
 // Creo la griglia
 function drawGrid(){
     const container = document.getElementById('container');
@@ -134,217 +97,80 @@ function drawGrid(){
     })
     container.innerHTML = htmlGenerato;
 }
-drawGrid()
-
-
-
-////////////////////////////////////////////////////////
-/*let litTemplate = "";
-posts.forEach((element)=>{
-  litTemplate =`
+// Creo il template 
+function gridItem(post){
+    const template = `
         <div class="post">
-            <div class="post__header">
+             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src="${element.author.image}" alt="${element.author.name}">                    
+                    ${post.author.image ? `<img class="profile-pic" src="${post.author.image}" alt="${post.author.name}">` : `<div class="profile-pic-default"><span>${getInitials(post.author.name)}</span></div>`}                    
                     </div>
                     <div class="post-meta__data">
-                        <div class="post-meta__author">${element.author.name}</div>
-                        <div class="post-meta__time">${element.created}</div>
+                        <div class="post-meta__author">${post.author.name}</div>
+                        <div class="post-meta__time">${new Date(post.created).toLocaleDateString()}</div>
                     </div>                    
                 </div>
             </div>
-            <div class="post__text">${element.content}</div>
+            <div class="post__text">${post.content}</div>
             <div class="post__image">
-                <img src="${element.media}" alt="">
+                <img src="${post.media}" alt="Immagine Post di ${post.author.name}">
             </div>
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button js-like-button" href="#" data-postid="${element.id}">
+                        <a class="like-button  js-like-button" href="#" data-postid="${post.id}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${element.likes}</b> persone
+                        Piace a <b id="like-counter-${post.id}" class="js-likes-counter">${post.likes}</b> persone
                     </div>
                 </div> 
-            </div>            
+            </div>             
         </div>
-        
-        `;
-      container.innerHTML += litTemplate;
-      console.log(litTemplate);
-}); */
+    `
+    return template;
+}
 
-// > 3. Al click su un pulsante "Mi Piace" di un post, se abbiamo già cliccato dobbiamo decrementare il contatore e cambiare il colore del bottone.
-// Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like
+//Bonus 2
+// Questo gestice il placeholder dello user img mancante
+const userLikes = [];
+function getInitials(name){
+    const nameParts = name.split(' ');
+    // console.log(nameParts)
+    const initials = nameParts[0].charAt(0) + nameParts[1].charAt(0);
+    return initials.toUpperCase();
+}
+// Milestone 3 + Bonus 3
+// Aggiunge o toglie la classe MiPiace e 1 unità al contatore
+function setLike(check, postid){
+    const counter = document.getElementById(`like-counter-${postid}`);
+    let likeValue = parseInt(counter.innerText);
+    if(check){
+        userLikes.push(postid) // questo aggiunge l'id ad ogni click
+        counter.innerText = likeValue + 1;
+    } else {
+        const index = userLikes.indexOf(postid);
+        if(index !== -1) userLikes.splice(index, 1) // se index diverso da -1 allora togli 1 da postid
+        counter.innerText = likeValue - 1;
+    }
+    // console.log("stampa counter: ", counter)
+}
+// Aggiunge evento al click e colora il MiPiace
+function attachEvent(){
+    const likeButtons = document.querySelectorAll('[data-postid]');
+    // console.log(likeButtons);
+    likeButtons.forEach((button)=>{
+        button.addEventListener('click', function(evento){
+            evento.preventDefault(); // questo impedisce il refresh ad ogni click
+            this.classList.toggle('like-button--liked'); // questo mette/toglie la classe al like
+            const check = this.classList.contains('like-button--liked');
+            setLike(check, this.dataset.postid);
+        })
+    })
+}
 
-////////////////////////////////////////////////////////
-// Cosa devo fare:
-// [x] 1. Richiamare gli elementi della collection
-// [x] 2. Convertire la collection in un array
-// [_] 3. Richiamare gli elementi interessati al "Mi Piace"
-// [_] 4. Creare evento al click
-// [_] 5. Aggiungere 1 unità al contatore
-// [_] 6. Creare un array che contenga gli id dei posts dove ho aggiunto il "Mi Piace"
-// [_] 7. Bonus 1 - Formattare le date in formato italiano (gg/mm/aaaa)
-// [_] 8. Bonus 2 - Gestire l'immagine profilo mancante con le iniziali dell'utente
-// [_] 9. Bonus 3 - Creare un evento contrario al "Mi Piace", togliendo il colore e togliendo 1 unità
-////////////////////////////////////////////////////////
-/*
-// Converto la collection in un array
-const itemsCollection = document.querySelectorAll('a.like-button.js-like-button');
-console.log("stampa collection",itemsCollection)
-
-const arguments = [...itemsCollection]
-function collectionToArray() {
-    arguments = [].slice.call(itemsCollection);
-    console.log("stampa il nuovo  array ",arguments);
-    console.log("stampa elemento 0 dell'array per controllo ", arguments[0]);
-}   
-collectionToArray(itemsCollection);
-console.log("stampa contenuto di arguments ", arguments.length)
-console.log("stampa contenuto di arguments ", arguments)
-
-// let index = [];
-// for(let i = 0; i < arguments.length; i++){
-//     // console.log(i.length)
-//     console.log("i = ",i)
-//     index = [...arguments]
-//     console.log("index == ",index.length)
-// }
-// console.log("index = ",index)
-
-// Genero l'evento al click
-// let postContLike = [];
-
-// const bottoni = document.querySelectorAll('[data-postId');
-
-// bottoni.forEach((button) => {
-//     button.addEventListener('click', function() {
-//         button.classList.add('like-button--liked');
-//         let post = button.getAttribute('data-postId');
-//         const contatore = document.getElementById(`like-counter-${post}`);
-//         postContLike.push(post);
-//         contatore.innerHTML = `${posts[element - 1].likes + 1}`
-//     })
-// })
-
-// .addEventListener('click', addLike);
-
-// function addLike(){
-//     let counter = document.getElementsById("like-counter-1");
-//     iLike.setAttribute('class', "like-button js-like-button like-button--liked");
-//     counter.innerHTML++
-//     console.log(ilike)
-//     console.log(counter)
-// }
-// mioBottone.addEventListener("click", addLike()) ;
-
-// function addLike(){
-//     mioBottone.style(".like-button--liked")
-// }
-
-// arguments.addEventListener('click', addLike(){
-//     document.getElementsByClassName("a").classList.add('.like-button--liked')
-// document.getElementById("mio-elemento").classList.add(‘classe-da-aggiungere’);
-// });
-// function addLike(){
-    
-// }
-
-
-
-
-// let isLike = 
-// isLike.push("like-button--liked")
-// collectionToArray.className("like-button").addEventListener('click', addLike());
-
-// let  checkItems = []
-// console.log("controllo che sia un array 01 ",checkItems)
-
-// checkItems = document.querySelectorAll('a.like-button.js-like-button')
-// console.log("controllo la lunghezza dell'array 02 ",checkItems)
-// console.log("controllo la lunghezza dell'array 03 ",checkItems.length)
-
-// let cerca = checkItems.includes('a.like-button.js-like-button')
-// console.log("controllo che l'array contenga la classe 04 ",cerca)
-// console.log("controllo che l'array contenga la classe 05 ",cerca.length)
-// Richiamo gli elementi della Collection
-// const itemsCollection = document.querySelectorAll('a.like-button.js-like-button');
-// console.log("stampa collection 00",itemsCollection)
-// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[0])
-// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[1])
-// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[2])
-// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[3])
-// console.log("querySelectorAll itemsCollection 01-A",itemsCollection[4])
-
-
-// const collectionToArray = Array.prototype.slice.call( itemsCollection );
-// console.log("collection to array 01 ",collectionToArray);
-
-// collectionToArray = document.querySelectorAll('a.like-button.js-like-button');
-// console.log("collection to array 02 ",collectionToArray);
-// console.log("collection to array 01 ",collectionToArray[1]);
-
-// collectionToArray.addEventListener('click', addLike());
-
-// const addId = [];
-
-// function addLike(){
-    // alert('questo funziona')
-    // collectionToArray.classList.add("like-button--liked");
-    // collectionToArray.setAttribute('class', 'like-button--liked');
-    // collectionToArray.innerHTML = `
-    // <a class="like-button like-button--liked js-like-button" href="#" data-postid="${element.id}">
-    //                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-    //                         <span class="like-button__label">Mi Piace</span>
-    //                     </a>
-    // `
-    // console.log("stampa addLike 04", collectionToArray)
-    // addId = posts.likes++;
-// }
-
-
-
-
-// const nuArray=[];
-// for(let i = 0; i < collectionToArray.length; i++){
-//     i.push = nuArray;
-//     console.log(nuArray)
-// }
-// array.forEach(function(currentValue, index, arr), thisValue)
-
-
-
-// for(let i = 0; i < collectionToArray.length; i++){
-//     collectionToArray[i].classList.add('like-button--liked');
-//     console.log("questa è la collection 02 ",collectionToArray[i])
-// }
-// console.log("questo è fuori dal for 03 ", collectionToArray)
-
-// function addLike(){
-//     itemsCollection.forEach((item)=>{
-//         item.addEventListener('click', function(){
-//             item.classList.add("like-button--liked");
-//         })
-//     })
-// };
-//  addLike();
-
-
-
-// Counter ++
-// document.addEventListener('click');
-// Creare un array che contenga gli id dei likes aggiunti
-
-
-/* <div class="likes__counter">
-    Piace a <b id="like-counter-1" class="js-likes-counter">${element.likes}</b> persone
-</div> */
-
-// let addPlus = posts[likes] 
-// addPlus++
-// console.log(addPlus)
+drawGrid()
+attachEvent()
